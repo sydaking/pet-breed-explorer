@@ -1,0 +1,19 @@
+/* styles/main.css */
+:root { --bg:#0f1115; --panel:#151922; --text:#e8eaf1; --muted:#a7adbb; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+.header { padding: 24px 16px; text-align: center; }
+.header h1 { margin: 0 0 6px; }
+.header p { margin: 0; color: var(--muted); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 16px 32px; }
+.card {
+  background: var(--panel);
+  border: 1px solid #243044;
+  border-radius: 12px;
+  padding: 16px;
+}
