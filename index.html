@@ -11,17 +11,21 @@
     <p>What's that breed!?</p>
   </header>
 
- <main class="container">
+<main class="container">
   <div class="card">
-    <h2>Try the search</h2>
-    <p>Type a breed name and we’ll mirror it below.</p>
-
+    <h2>Search Demo</h2>
     <label for="search">Search by name</label><br>
     <input id="search" type="search" placeholder="e.g., beagle" />
-
     <p id="echo" style="margin-top: 12px; color: var(--muted);">
       You typed: <strong>(nothing yet)</strong>
     </p>
+  </div>
+
+  <h2 style="margin-top: 32px;">Breed Grid (placeholder)</h2>
+  <div id="grid" class="grid">
+    <div class="card">Breed 1</div>
+    <div class="card">Breed 2</div>
+    <div class="card">Breed 3</div>
   </div>
 </main>
 <script type="module" src="./src/app.js"></script>
