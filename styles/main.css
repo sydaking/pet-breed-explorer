@@ -30,3 +30,34 @@ body {
   justify-content: center;
   font-weight: bold;
 }
+.dog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid #243044;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.dog-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #0b1220;
+}
+
+.dog-card-body {
+  padding: 12px;
+}
+
+.dog-card-title {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.dog-card-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
