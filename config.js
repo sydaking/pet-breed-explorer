@@ -1,0 +1,2 @@
+export const DOG_API_KEY = "live_q7L9mYR7lBTgt6gO7ULjQ0F3wyKidsBQI9UF4quttw0zYOEl3RrZSxySsq1xoONO";
+
