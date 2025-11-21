@@ -32,6 +32,7 @@ body {
 }
 .dog-card {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 8px;
   background: var(--panel);
@@ -60,4 +61,29 @@ body {
   margin: 0;
   color: var(--muted);
   font-size: 0.85rem;
+}
+/* Floating favorite heart button */
+.fav-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  color: #ff7ab6;   /* soft pink */
+  opacity: 0.85;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.fav-heart:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.fav-heart.hearted {
+  color: #ff3d86;   /* brighter pink when favorited */
+  opacity: 1;
 }
