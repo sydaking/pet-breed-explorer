@@ -5,7 +5,6 @@ import { fetchBreeds } from "./api.js";
 
 // 2) Grab important DOM elements
 const search = document.getElementById("search");
-const echo = document.getElementById("echo");
 const grid = document.getElementById("grid");
 const statusEl = document.getElementById("status");
 const favToggle = document.getElementById("toggle-favorites");
@@ -135,22 +134,15 @@ function applyFilters() {
   setStatus(`Showing ${list.length} of ${ALL_BREEDS.length} breeds`);
 }
 
-// 8) Search input: echo text + filter breeds
-if (!search || !echo) {
-  console.error("Missing #search or #echo in HTML");
+// 8. Search input: filter breeds as user types
+if (!search) {
+  console.error("Missing #search in HTML");
 } else {
   search.addEventListener("input", () => {
-    const text = search.value.trim();
-    echo.innerHTML = `You typed: <strong>${text || "(nothing yet)"}</strong>`;
+    applyFilters();  // no echo, just filtering
+  });
+}
 
-    applyFilters(); // ← handles all filtering now
-  });
-}
-if (favToggle) {
-  favToggle.addEventListener("change", () => {
-    applyFilters();
-  });
-}
 
 
 // 9) Initial load: get favorites, fetch breeds, render
