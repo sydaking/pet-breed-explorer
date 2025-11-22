@@ -8,6 +8,7 @@ const search = document.getElementById("search");
 const echo = document.getElementById("echo");
 const grid = document.getElementById("grid");
 const statusEl = document.getElementById("status");
+const favToggle = document.getElementById("toggle-favorites");
 
 // 3) App state
 let ALL_BREEDS = [];
@@ -108,7 +109,30 @@ if (grid) {
     }
 
     saveFavorites();
+    applyFilters();
   });
+}
+function applyFilters() {
+  if (!ALL_BREEDS.length) return;
+
+  const text = search.value.trim().toLowerCase();
+  let list = ALL_BREEDS;
+
+  // 1) Filter by search text
+  if (text) {
+    list = list.filter((breed) =>
+      breed.name.toLowerCase().includes(text)
+    );
+  }
+
+  // 2) Filter by favorites only if the toggle is checked
+  if (favToggle && favToggle.checked) {
+    list = list.filter((breed) => favoriteIds.has(breed.id));
+  }
+
+  // Render and update status
+  renderBreeds(list);
+  setStatus(`Showing ${list.length} of ${ALL_BREEDS.length} breeds`);
 }
 
 // 8) Search input: echo text + filter breeds
@@ -119,15 +143,15 @@ if (!search || !echo) {
     const text = search.value.trim();
     echo.innerHTML = `You typed: <strong>${text || "(nothing yet)"}</strong>`;
 
-    const q = text.toLowerCase();
-    const filtered = ALL_BREEDS.filter((breed) =>
-      breed.name.toLowerCase().includes(q)
-    );
-
-    renderBreeds(filtered);
-    setStatus(`Showing ${filtered.length} of ${ALL_BREEDS.length} breeds`);
+    applyFilters(); // ← handles all filtering now
   });
 }
+if (favToggle) {
+  favToggle.addEventListener("change", () => {
+    applyFilters();
+  });
+}
+
 
 // 9) Initial load: get favorites, fetch breeds, render
 (async function loadBreeds() {
